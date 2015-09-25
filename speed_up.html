@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title> Convert.akmx.uz | Tezlanish birliklarini online O'zgartirgich</title>
+  <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">	
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description"  content="Tezlanish birliklarini bir-biriga o'zgartirishni amalga oshiruvchi online xizmat" />
+	<meta name="keywords"  content="tezlanish, killometr, sekund, kvadrat, metr, millimetr" />
+
+<!--	Outdated browser detection -->
+	<script>
+		var hideCloseButton=true;
+		var hideRemindButtons=true;
+		var displayPoweredBy=false;
+		var noticeLang="custom";
+		var noticeLangCustom={
+			"title"           :"Sizning brauzeringiz eskirgan!",
+			"notice"          :"Siz eski brauzer ishlatmoqdasiz. Ushbu brauzerdan foydalansangiz, saytimizning barcha funksiyalarini ishlataolmaysiz.",
+			"selectBrowser"   :"Mashhur brauzerlarning rasmiy saytiga o'tish:",
+			"remindMeLater"   :"Keyinroq eslatish",
+			"neverRemindAgain":"Boshqa eslatmaslik"
+		};
+		var notSupportedBrowsers=[
+			{'os':'Any','browser':'MSIE','version':10},
+			{'os':'Any','browser':'Firefox','version':34}, // 2014-december
+			{'os':'Any','browser':'Chrome','version':39}, // 2014-november
+			{'os':'Any','browser':'Opera','version':28}, // 2015-march
+			{'os':'Any','browser':'Safari','version':5} // 2012
+		];
+	</script>
+	<!--	Outdated browser detection /-->
+
+
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../font-awesome-4.3.0/css/font-awesome.min.css">
+	<link href="../style/style.css" rel="stylesheet">	 
+    <link href="../Metro-UI-CSS-master/build/css/metro.css" rel="stylesheet">
+	<link href="../Metro-UI-CSS-master/docs/css/metro-icons.css" rel="stylesheet">
+	<link rel="shortcut icon" href="http://convert.akmx.uz/icon_convert.png" />
+
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="mathjs.js"></script>
+	<script src="../Metro-UI-CSS-master/docs/js/jquery-2.1.3.min.js"></script>
+    <script src="../Metro-UI-CSS-master/build/js/metro.js"></script>
+
+<style>
+.panel-success>.panel-heading {
+background-color:#00aff0 !important;
+color:white;
+}
+.panel-success {
+border-color:blue;
+}
+.panel-default>.panel-heading {
+background-color:#00aff0 !important;
+color:white;
+}
+</style>
+</head>
+<body onload="$('#group_value').hide(); $('#yopish').hide();" style="background-color:#b7e3f3">
+<center>
+<!-- yuqori menyu-->
+<div class="navbar navbar-inverse">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#open_close_menu"> 
+ <span class="sr-only"> Open</span>
+<span class="icon-bar"> </span>
+<span class="icon-bar"> </span>
+<span class="icon-bar"> </span> 
+</button>
+</div>
+<div class="collapse navbar-collapse" id="open_close_menu">
+<ul class="nav navbar-nav">
+<li><a href="http://akmx.uz" target=_blank><span class="glyphicon glyphicon-pencil"></span> akmx.uz</a></li>
+<li><a href="http://ask.akmx.uz" target=_blank><span class="glyphicon glyphicon-question-sign"></span> ask.akmx.uz</a></li>
+<li><a  ><span class="glyphicon glyphicon-retweet"></span> convert.akmx.uz</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="container-fluid">
+
+<div class="panel panel-success col-sm-8 col-sm-offset-2 block-shadow" style="padding:0px; " >
+<div class="panel-heading">
+<table border="0" width="100%">
+<tr><td align="left"><a href="http://convert.akmx.uz"><span class="mif-home mif-lg fg-white"></span> </a></td>
+<td align="center"><span class="mif-drive-eta mif-lg"> </span> Converter | <b>Tezlanish</b> birliklarini bir-biriga o'tkazish</td>
+</tr></table>
+</div>
+<div class="panel-body">
+
+<div class="row">
+<div class="col-md-5 col-sm-12">
+    <div class="input-group">
+ <input type="text" class="form-control" size="50" id="value1" maxlength="15" onkeyup="convert();" placeholder="Qiymat kiriting" value="">
+ <div class="input-group-btn" style="width:90px;">
+ <select class="form-control" style="width:150px;" id="sel1" onchange="if (document.getElementById('value1').value != '') { convert();} ">
+ <option value="1">km/s^2</option>
+ <option value="2">metr/s^2</option>
+ <option value="3">mm/s^2</option>
+  </select>
+ </div>
+</div>
+ 
+  </div>
+  <div class="col-md-2 col-sm-12">
+  <button type="button" class="btn btn-default btn-md" onclick="convert();" disabled><span class="mif-tab fg-blue"></span></button>
+  </div>
+  
+  
+  <div class="col-md-5 col-sm-12">
+  <div class="input-group">
+ <input type="text" class="form-control" size="50" id="natija" readonly placeholder="Natija" maxlength="15">
+ <div class="input-group-btn" style="width:90px;">
+ <select class="form-control" style="width:150px;" id="sel2" onchange="if (document.getElementById('value1').value != '') { convert();} ">
+ <option value="1">km/s^2</option>
+ <option value="2">metr/s^2</option>
+ <option value="3">mm/s^2</option>
+ </select>
+ </div>
+</div>
+  </div>
+  
+
+
+	  <div class="col-md-12 col-sm-12">
+	<div class="alert alert-success" id="message" style="display:none; margin-bottom:0px;"></div>
+	</div>
+		
+		
+		
+
+	<div class="row">
+<div class="col-md-12 col-sm-12">
+<span style="font-family:Verdana; font-size:12px; color:#7ab362; cursor:pointer;font-weight:bold;" id="more">
+<span class="mif-chevron-thin-down mif-2x fg-blue" id="ochish"></span>
+<span class="mif-chevron-thin-up mif-2x fg-blue" id="yopish"></span>
+</span>
+</div>
+</div>
+	
+		  
+		
+
+	
+	
+	<div id="group_value">
+	
+	
+	<div class="col-md-6 col-sm-12">
+	
+	
+	<div class="panel panel-default">
+  <div class="panel-heading"><font color="red">e</font> simvolini qanday tushunish kerak? (Misollar asosida)</div>
+  <div class="panel-body">
+    0.66e11 <b><font color="green">==</font></b> 0.66*10<sup>11</sup> <b><font color="green">==</font></b> 66000000000 <br><br>
+	8.99e5 <b><font color="green">==</font></b> 8.99*10<sup>5</sup> <b><font color="green">==</font></b> 899000 <br><br>
+	0.66e-11 <b><font color="green">==</font></b> 0.66*10<sup>-11</sup> <b><font color="green">==</font></b> 0.0000000000066 <br><br>
+	
+	<font color="red"><b>^</b> <font color="black"> - kvadrat degani, ya'ni darajasi 2ga teng!</font></font>
+  </div>
+</div>
+	
+	</div>
+
+
+	
+	
+	
+	
+
+	<div class="col-md-6 col-sm-12">
+	
+	<div class="input-group" style="width:100%"> 
+	<input type="text" class="form-control" id="in1" readonly style="background-color:white;" maxlength="14">
+	<span class="input-group-addon" style="width:35%">km/s<sup>2</sup></span>
+	</div>
+	
+	<div class="input-group" style="width:100%">
+		<input type="text" class="form-control" id="in2" readonly style="background-color:white;" maxlength="14">
+		<span class="input-group-addon" style="width:35%">metr/s<sup>2</sup></span>
+	</div>
+	
+	<div class="input-group" style="width:100%">
+	<input type="text" class="form-control" id="in3" readonly style="background-color:white;"  maxlength="14">
+	<span class="input-group-addon" style="width:35%">mm/s<sup>2</sup></span>
+	</div>
+	
+	
+	</div>
+	
+	 
+	 
+	</div>
+	
+	
+	
+	
+	
+<div class="row">
+<div class="col-md-12 col-sm-12">
+	
+  
+ <div class="panel panel-default" style="margin:15px; margin-top:10px;">
+  <!-- Default panel contents -->
+  <div class="panel-heading"> <span class="mif-drive-eta mif-lg"></span> <b>Tezlanish</b> o'lchamlari bo'yicha qo'llanma</div>
+
+  <!-- Table -->
+  <table class="table">
+   <thead style="text-align:center !important;"><tr><th>Birlik</th><th>Abbreviatura</th><th>Qiymat</th></tr></thead>
+   <tbody>
+   <tr><td>Kilometr/sekund(kvadrat)</td><td>km/s<sup>2</sup></td><td>1</td></tr>
+   <tr><td>Metr/sekund(kvadrat)</td><td>metr/s<sup>2</sup></td><td>0.001 km/s<sup>2</sup></td></tr>
+   <tr><td>Millimetr/sekund(kvadrat)</td><td>mm/s<sup>2</sup></td><td>0.2778 metr/s<sup>2</sup> </td></tr>
+   </tbody>
+  </table>
+</div>	
+
+</div>
+</div>		
+		</div>	
+		</div>	
+		</div>	
+
+		
+		
+	<div class="col-md-12 col-sm-12" style="display:flex;align-items: center;flex-direction: column; padding-left:0px; padding-right:0px;">
+	<div class="tile-group" style="padding-top:0px; margin-left:0px; padding-left:0px;">		
+		  <div class="tile-container" >	            						
+                								
+<a href="http://convert.akmx.uz"> 
+<div class="tile-small bg-black bg-hover-grayDarker fg-white" data-role="tile" title="Asosiy sahifa">
+ <div class="tile-content iconic">
+    <span class="icon mif-home"></span>
+     </div>          
+  </div></a>	
+  
+  <a href="http://convert.akmx.uz/weight.html">
+				<div class="tile-small bg-darkCrimson bg-hover-crimson fg-white" data-role="tile" title="Og'irlik">
+                    <div class="tile-content iconic">
+                     <span class="icon mif-justice" ></span>
+                    </div>
+                </div></a>	
+				
+<a href="http://convert.akmx.uz/length.html">
+                <div class="tile-small bg-olive bg-hover-lightOlive bg-cyan fg-white" data-role="tile" title="Uzunlik">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-enlarge2"></span>
+                    </div>          
+                </div>	</a>
+				
+<a href="http://convert.akmx.uz/time.html">			
+                <div class="tile-small bg-red bg-hover-lightRed fg-white" data-role="tile" title="Vaqt">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-alarm"></span>
+                    </div>
+                </div>	
+</a>
+				
+<a href="http://convert.akmx.uz/speed.html">				
+				 <div class="tile-small bg-green bg-hover-lightGreen fg-white" data-role="tile" title="Tezlik">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-meter"></span>
+                    </div>         
+                </div>				
+</a>
+
+
+				 <div class="tile-small bg-blue fg-gray" data-role="tile" title="Tezlanish">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-drive-eta"></span>
+                    </div>           
+                </div>
+								
+
+<a href="http://convert.akmx.uz/temperature.html">
+				 <div class="tile-small bg-darkOrange bg-hover-orange fg-white" data-role="tile" title="Harorat">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-thermometer2"></span>
+                    </div>           
+                </div>
+</a>								
+
+<a href="http://convert.akmx.uz/information.html">
+					 <div class="tile-small bg-lightOrange bg-hover-amber fg-white" data-role="tile" title="Axborot o'lchami">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-database"></span>
+                    </div>
+                </div>				
+</a>				
+
+<a href="http://convert.akmx.uz/size.html">
+					 <div class="tile-small bg-darkTeal bg-hover-teal fg-white" data-role="tile" title="Hajm">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-bin"></span>
+                    </div>
+                     </div>					
+</a>				
+            </div>	
+			</div>		
+</div>	
+
+
+	</div>	
+		
+       </center> 	   
+	
+	 
+	   
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+	
+	
+	$("#more").click(function () {
+      if ($("#group_value").is(":hidden")) {
+	   $("#group_value").slideDown("slow");
+	   $("#ochish").hide();
+	   $("#yopish").show();
+      } else {
+        $("#group_value").slideUp();
+		$("#yopish").hide();
+		$("#ochish").show();
+      }
+    });	
+	</script>
+	
+	<script type="text/javascript">
+function convert() {
+
+var sel1 = document.getElementById("sel1");
+var selopt1 = Number(sel1.options[sel1.selectedIndex].value);
+
+var sel2 = document.getElementById("sel2");
+var selopt2 = Number(sel2.options[sel2.selectedIndex].value);
+
+var value1 = document.getElementById("value1").value;
+
+if((value1.match(/[^\d\.]/g))  ||(value1.charAt(0) == ".")){
+document.getElementById('message').style.display="block";
+document.getElementById('natija').value="";
+document.getElementById('value1').value="";
+document.getElementById('message').className = "alert alert-danger";
+document.getElementById('message').innerHTML = "Faqat raqam kiritilishi lozim, 0 dan boshlanishi ham mumkin emas";
+for(var i=1; i<8; i++ ) {
+document.getElementById('in'+i).value = "";
+}
+return;
+}
+else
+document.getElementById('message').style.display="none";
+
+var arr = new Array(7);
+arr[0] = "";
+arr[1] = "1"; //km/s2
+arr[2] = "1000";    //m/s2
+arr[3] = "3600";		  //mm/s2
+weig(selopt1, selopt2, value1);
+
+function weig(x,y,s) {
+document.getElementById('in'+x).value = s; // qaysinga o'tkan bo'lsa, ushanga yozib quymoqda
+if (x===y)
+document.getElementById('natija').value = s; //agar kiritilgan  va chiqarish bir hil bo'lsa, yozib quyadi
+var s = s/arr[x]; //hammasi kilgramga o'tmoqda
+
+
+for(var i=1; i<8; i++ ) {
+if (i===x) //agar olchov bir hil bolsa, tepada kiritilgan shnga tashab ketiladi
+continue;
+
+k = s*arr[i]; // kerakli olchov birligiga itmoqda
+str = k.toString(); //string tipga utmoqda
+
+if ((k>1) &&(str.indexOf(".")==-1)) {    //agar 1 dan katta bolsa va . li qiymat bolmasa E siz chiqaradi
+document.getElementById('in'+i).value = str;
+if (i===y) {
+document.getElementById('natija').value = str; 
+}
+}
+
+else if ((k>1) &&(str.indexOf(".")!==-1)){ //agar 1 dan katta bolib . lik son bo'lsa, qisqartirib chiqaradi
+document.getElementById('in'+i).value = k.toFixed(2);
+if (i===y) {
+document.getElementById('natija').value = k.toFixed(2); 
+} 
+}
+else if((k<1)&&(str.length<15)) {  //agar 1 dan kichik va uznligi 15 tadan kam bolsa, E siz chiqaradi
+
+document.getElementById('in'+i).value = str
+if (i===y)
+document.getElementById('natija').value = str
+}
+else { //aks holda qisqartirib chiqaradi, yuqoridagilar bulmasa
+document.getElementById('in'+i).value = math.format(k, {precision: 14}); 
+if (i===y) 
+document.getElementById('natija').value = math.format(k, {precision: 14}); 
+}
+}
+}
+}
+
+</script>
+			<script src="bootstrap/js/bootstrap.min.js"></script>	
+        </body>
+    </html>
+    </html>

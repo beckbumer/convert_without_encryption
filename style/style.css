@@ -1,0 +1,19 @@
+.navbar-default .navbar-nav>li>a:link {
+  color: #78829d;
+text-decoration:none;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+ color:white !important;
+text-decoration:underline;
+}
+
+.navbar-default .navbar-nav>li>a:active {
+  color: #78829d;
+text-decoration:none;
+}
+
+.navbar-default .navbar-nav>li>a:visited {
+  color: #78829d;
+text-decoration:none;
+}
